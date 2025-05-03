@@ -1,0 +1,61 @@
+gcc -o reference reference.c
+echo "reference 100"
+./reference 100
+echo "reference 1000"
+./reference 1000
+echo "reference 10000"
+./reference 10000
+echo "reference 100000"
+./reference 100000
+
+gcc -msse4.2 -o sse sse.c
+echo "sse 100"
+./sse 100
+echo "sse 1000"
+./sse 1000
+echo "sse 10000"
+./sse 10000
+echo "sse 100000"
+./sse 100000
+
+mpicc -o mpi mpi.c
+
+#echo "mpi p = 2, N = 100"
+#mpiexec -n 2 ./mpi 100
+
+#echo "mpi p = 4, N = 100"
+#mpiexec -n 4 ./mpi 100
+
+echo "mpi p = 8, N = 100"
+mpiexec -n 8 ./mpi 100
+
+echo "mpi p = 2, N = 1000"
+mpiexec -n 2 ./mpi 1000
+
+#echo "mpi p = 4, N = 1000"
+#mpiexec -n 4 ./mpi 1000
+
+#echo "mpi p = 8, N = 1000"
+#mpiexec -n 8 ./mpi 1000
+
+echo "mpi p = 2, N = 10000"
+mpiexec -n 2 ./mpi 10000
+
+echo "mpi p = 4, N = 10000"
+mpiexec -n 4 ./mpi 10000
+
+#echo "mpi p = 8, N = 10000"
+#mpiexec -n 8 ./mpi 10000
+
+echo "mpi p = 2, N = 100000"
+mpiexec -n 2 ./mpi 100000
+
+echo "mpi p = 4, N = 100000"
+mpiexec -n 4 ./mpi 100000
+
+echo "mpi p = 8, N = 100000"
+mpiexec -n 8 ./mpi 100000
+
+rm reference sse mpi
+
+echo "Finished!"
